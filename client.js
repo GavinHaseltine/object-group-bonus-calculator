@@ -51,38 +51,101 @@ console.log('array of employee data: ',  employees );
 
 // This function will calculate 1 employee's bonus!
 //
-function calculateIndividualEmployeeBonus( employee ) {  
-  // your logic here
-for (employee of employees){
-  console.log(employees)
-}
-if (employees.reviewRating == 3){
-  // increase 4%
-console.log(employees.annualSalary)
-}
-else if (employees.reviewRating == 4){
-  // increase 6%
 
-}
-else if (employees.reviewRating >= 5 ){
-  //increase 10%
-}
-else if (employees.reviewRating <= 2){
-  // nothing
-}
+//-------
 
-  if(employees.annualSalary > 65000){
-    //subtract 1%
-  }
+// function calculateIndividualEmployeeBonus( employee ) {  
+//   //-your logic here
+// for (employee of employees){
+//   console.log(employees)
+// }
+// if (employees.reviewRating == 3){
+//   //-increase 4%
+// console.log(employees.annualSalary)
+// }
+// else if (employees.reviewRating == 4){
+//   //-increase 6%
+
+// }
+// else if (employees.reviewRating >= 5 ){
+//   //-increase 10%
+// }
+// else if (employees.reviewRating <= 2){
+//   //-nothing
+// }
+
+//   if(employees.annualSalary > 65000){
+//     //-subtract 1%
+//   }
  
   
-  // return new object with bonus results
-//return employeeBonus;
-}
+//   // return new object with bonus results
+// //return employeeBonus;
+// }
+
+//-------
+
+
 
 //console.log(employees.employeeNumber.length)
-calculateIndividualEmployeeBonus();
+//calculateIndividualEmployeeBonus();
 
 // if(employees.employeeNumber.length){
 //   console.log(employees.employeeNumber.length)
 // }
+
+function calculateIndividualEmployeeBonus( employee) {
+
+let bonusPercentage = 0;
+
+const salaryNumber = Number(employee.annualSalary)
+
+if(employee.reviewRating <= 2){
+  bonusPercentage = 0;
+}
+
+if(employee.reviewRating == 3){
+  bonusPercentage = 4
+}
+
+if(employee.reviewRating == 4){
+  bonusPercentage = 6
+}
+
+if(employee.reviewRating == 5){
+  bonusPercentage = 10
+}
+
+if(employee.employeeNumber.length == 4){
+bonusPercentage += 5
+}
+
+if(employee.annualSalary > 65000){
+  bonusPercentage -= 1
+}
+
+if(bonusPercentage > 13){
+  bonusPercentage = 13
+}
+
+if(bonusPercentage < 0){
+bonusPercentage = 0
+}
+
+let totalBonus = employee.annualSalary * bonusPercentage;
+
+let result = { 
+  name: employee.name,
+  bonusPercentage: 'Bonus percentage -TBD',
+totalCompensation: 'total comp - TBD',
+totalBonus: 'total bonus - TBD'
+}
+return result
+
+}
+
+//testing for all employees
+for(let indivduals of employees){
+  console.log(`%c ${indivduals.name}`)
+  calculateIndividualEmployeeBonus(indivduals)
+}
